@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class SignInPage extends BasePage {
@@ -46,6 +47,9 @@ public class SignInPage extends BasePage {
     }
 
     public void clickOnLogoutButton() {
+        Actions action = new Actions(driver);
+        action.moveToElement(logoutButton);
+        waitElementToBeClickable(logoutButton);
         logoutButton.click();
     }
 

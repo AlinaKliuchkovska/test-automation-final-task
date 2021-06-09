@@ -62,6 +62,11 @@ public class ProductPage extends BasePage {
         return this;
     }
 
+    public void clickOnAddToWishlistButton() {
+        waitElementToBeClickable(saveToWishlistButton);
+        saveToWishlistButton.click();
+    }
+
     public void clickOnAddToCartButton() {
         addToCartButton.click();
     }

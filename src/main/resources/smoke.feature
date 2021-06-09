@@ -22,17 +22,18 @@ Feature: Smoke
 
   Scenario Outline: Check login function for registered user
     Given User opens '<homePage>' page
-    And User clicks on My account button
+    And User clicks on account button
     And User clicks on Sign in button
     And User checks visibility of Email and Password inputs
     And User enters email '<email>'
     And User enters password '<password>'
     When User clicks on Submit sign in button
+    And User goes to Account page
     Then User checks that current tab has title '<keyword>'
     And User clicks on Log out button
 
     Examples:
-      | homePage              | email                       | password        | keyword    |
+      | homePage              | email                 | password        | keyword    |
       | https://www.asos.com/ | testasos422@gmail.com | $sQJx$eQw7?Rtg3 | My Account |
 
   Scenario Outline: Check that search function works correct
@@ -48,7 +49,7 @@ Feature: Smoke
 
   Scenario Outline: Check login function for unregistered user
     Given User opens '<homePage>' page
-    And User clicks on My account button
+    And User clicks on account button
     And User clicks on Sign in button
     And User checks visibility of Email and Password inputs
     And User enters email '<email>'
@@ -57,8 +58,8 @@ Feature: Smoke
     Then User checks that login error message '<errorMessage>' is correct
 
     Examples:
-      | homePage              | email          | password        | errorMessage                                                                      |
-      | https://www.asos.com/ | test@gmail.com | $sQJx$eQw7?Rtg3 | Looks like either your email address or password were incorrect. Wanna try again? |
+      | homePage              | email          | password        | errorMessage                          |
+      | https://www.asos.com/ | test@gmail.com | $sQJx$eQw7?Rtg3 | Sorry, we cannot log you in right now |
 
   Scenario Outline: Check that search information message is displayed
     Given User opens '<homePage>' page
@@ -89,24 +90,24 @@ Feature: Smoke
     And User clicks on Outlet button
     And User clicks on View all button
     When User moved to Outlet page
-    Then User Checks that all products have discount
+    Then User checks that all products have discount
 
     Examples:
       | homePage              |
       | https://www.asos.com/ |
 
-  Scenario Outline: Check that products sorted by price from high to low
+  Scenario Outline: Check add product to wishlist
     Given User opens '<homePage>' page
     And User clicks on Women button
     And User clicks on Outlet button
     And User clicks on View all button
-    And User moved to Outlet page
-    When User set a sorting type
-    Then User check that products sorted by price from high to low
+    And User moved to Product page
+    When User clicks on Add to wishlist button
+    Then User checks that text from wishlist is '<textFromWishlist>'
 
     Examples:
-      | homePage              |
-      | https://www.asos.com/ |
+      | homePage              | textFromWishlist |
+      | https://www.asos.com/ | 1 item           |
 
   Scenario Outline: Check add product to cart
     Given User opens '<homePage>' page

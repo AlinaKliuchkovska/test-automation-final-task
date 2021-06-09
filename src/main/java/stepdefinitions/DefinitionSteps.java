@@ -11,7 +11,10 @@ import manager.PageFactoryManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import pages.*;
+
+import javax.swing.*;
 
 import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
 import static org.junit.Assert.*;
@@ -92,8 +95,8 @@ public class DefinitionSteps {
         assertTrue(productPage.isEnabledProductDetailsTextField());
     }
 
-    @And("User clicks on My account button")
-    public void clickOnMyAccountButton() {
+    @And("User clicks on account button")
+    public void clickOnAccountButton() {
         homePage.clickOnMyAccountButton();
     }
 
@@ -122,6 +125,10 @@ public class DefinitionSteps {
     @When("User clicks on Submit sign in button")
     public void clickOnSubmitSignInButton() {
         signInPage.clickOnSigninButton();
+    }
+
+    @And("User goes to Account page")
+    public void goToAccountPage() {
         homePage.clickOnMyAccountButton();
         homePage.clickOnGoToMyAccountButton();
     }
@@ -170,7 +177,7 @@ public class DefinitionSteps {
         assertEquals(searchResultsPage.getTextFromNothingMatchesTextField(), informMessage);
     }
 
-    @Then("User Checks that all products have discount")
+    @Then("User checks that all products have discount")
     public void userChecksThatAllProductsHaveDiscount() {
         for (WebElement product : outletPage.getListOfProducts()) {
             assertTrue(outletPage.isDiscountEnabled(product));
@@ -186,16 +193,6 @@ public class DefinitionSteps {
     @And("User moved to Outlet page")
     public void moveToOutletPage() {
         outletPage = pageFactoryManager.getOutletPage();
-    }
-
-    @When("User set a sorting type")
-    public void setASortingType() {
-        outletPage.setSearchType();
-    }
-
-    @Then("User check that products sorted by price from high to low")
-    public void checkThatProductsSortedByPriceFromHighToLow() {
-        assertTrue(Ordering.natural().reverse().isOrdered(outletPage.getListOfProductsPrices()));
     }
 
     @And("User chooses the necessary size of product")
@@ -229,5 +226,18 @@ public class DefinitionSteps {
     @After
     public void tearDown() {
         driver.close();
+    }
+
+    @When("User clicks on Add to wishlist button")
+    public void clickOnAddToWishlistButton() {
+        productPage = pageFactoryManager.getProductPage();
+        productPage.clickOnAddToWishlistButton();
+    }
+
+    @Then("User checks that text from wishlist is {string}")
+    public void userChecksThatProductAddedToWishlist(String textFromWishlist) {
+        homePage = pageFactoryManager.getHomePage();
+        homePage.clickOnWishlistButton();
+        assertEquals(homePage.getTextFromCountProductsFromWishlist(), textFromWishlist);
     }
 }

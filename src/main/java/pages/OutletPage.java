@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OutletPage extends BasePage {
@@ -25,25 +24,6 @@ public class OutletPage extends BasePage {
     @FindBy(xpath = "//a[@class='_3TqU78D']")
     private List<WebElement> listOfProducts;
 
-    @FindBy(xpath = "//span[@data-auto-id='productTileSaleAmount']")
-    private List<WebElement> listOfProductsPrices;
-
-    @FindBy(xpath = "//a[@data-auto-id='loadMoreProducts']")
-    private WebElement loadMoreButton;
-
-    @FindBy(xpath = "//span[@data-auto-id='productTileSaleAmount']")
-    private WebElement firstProductPrice;
-
-    @FindBy(xpath = "//article[last()]//span[@data-auto-id='productTileSaleAmount']")
-    private WebElement lastProductPrice;
-
-    public void setSearchType() {
-        waitElementToBeClickable(sortButton);
-        sortButton.click();
-        sortPriceHighToLowButton.click();
-        waitElementToBeClickable(lastProductPrice);
-    }
-
     public void moveToProductPage() {
         waitVisibilityOfElement(listOfProducts.get(0));
         listOfProducts.get(0).click();
@@ -55,16 +35,5 @@ public class OutletPage extends BasePage {
 
     public List<WebElement> getListOfProducts() {
         return listOfProducts;
-    }
-
-    public List<String> getListOfProductsPrices() {
-        waitVisibilityOfElement(firstProductPrice);
-        List<String> pricesOfElements = new ArrayList<>();
-        for (WebElement price : listOfProductsPrices) {
-            waitElementToBeClickable(price);
-            pricesOfElements.add(price.getText().replace("£", ""));
-
-        }
-        return pricesOfElements;
     }
 }

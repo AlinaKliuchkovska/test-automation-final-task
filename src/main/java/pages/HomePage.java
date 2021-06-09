@@ -16,6 +16,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//button[@data-testid='myAccountIcon']")
     private WebElement myAccountButton;
 
+    @FindBy(xpath = "//a[@data-testid='savedItemsIcon']")
+    private WebElement wishlistButton;
+
     @FindBy(xpath = "//a[contains((text()),'Sign In')]")
     private WebElement signInButton;
 
@@ -27,6 +30,9 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//a[contains(@href,'?cid=27391&nlid=ww')]")
     private WebElement viewAllButton;
+
+    @FindBy(xpath = " //div[@class='itemCount_3vWat']")
+    private WebElement countProductsFromWishlist;
 
     @FindBy(xpath = "//input[@id='chrome-search']")
     private WebElement searchInput;
@@ -40,6 +46,16 @@ public class HomePage extends BasePage {
         waitElementToBeClickable(myAccountButton);
         myAccountButton.click();
         waitElementToBeClickable(signInButton);
+    }
+
+    public void clickOnWishlistButton() {
+        waitElementToBeClickable(wishlistButton);
+        wishlistButton.click();
+        waitVisibilityOfElement(countProductsFromWishlist);
+    }
+
+    public String getTextFromCountProductsFromWishlist() {
+        return countProductsFromWishlist.getText();
     }
 
     public void clickOnGoToMyAccountButton() {
