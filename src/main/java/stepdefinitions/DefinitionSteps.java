@@ -1,6 +1,4 @@
 package stepdefinitions;
-
-import com.google.common.collect.Ordering;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -11,10 +9,8 @@ import manager.PageFactoryManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import pages.*;
 
-import javax.swing.*;
 
 import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
 import static org.junit.Assert.*;

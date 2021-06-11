@@ -68,6 +68,7 @@ public class ProductPage extends BasePage {
     }
 
     public void clickOnAddToCartButton() {
+        waitElementToBeClickable(addToCartButton);
         addToCartButton.click();
     }
 

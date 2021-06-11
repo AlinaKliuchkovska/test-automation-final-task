@@ -81,6 +81,7 @@ public class HomePage extends BasePage {
     }
 
     public void enterKeyWordToSearchInput(final String keyword) {
+        waitElementToBeClickable(searchInput);
         searchInput.clear();
         searchInput.sendKeys(keyword, Keys.ENTER);
     }

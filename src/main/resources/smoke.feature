@@ -34,7 +34,7 @@ Feature: Smoke
 
     Examples:
       | homePage              | email                 | password        | keyword    |
-      | https://www.asos.com/ | testasos422@gmail.com | $sQJx$eQw7?Rtg3 | My Account |
+      | https://www.asos.com/ | asostest6@gmail.com | $sQJx$eQw7?Rtg3 | My Account |
 
   Scenario Outline: Check that search function works correct
     Given User opens '<homePage>' page
@@ -58,8 +58,8 @@ Feature: Smoke
     Then User checks that login error message '<errorMessage>' is correct
 
     Examples:
-      | homePage              | email          | password        | errorMessage                          |
-      | https://www.asos.com/ | test@gmail.com | $sQJx$eQw7?Rtg3 | Sorry, we cannot log you in right now |
+      | homePage              | email          | password        | errorMessage                                                                      |
+      | https://www.asos.com/ | test@gmail.com | $sQJx$eQw7?Rtg3 | Looks like either your email address or password were incorrect. Wanna try again? |
 
   Scenario Outline: Check that search information message is displayed
     Given User opens '<homePage>' page

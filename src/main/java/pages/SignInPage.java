@@ -31,14 +31,17 @@ public class SignInPage extends BasePage {
     }
 
     public void enterEmail(final String email) {
+        waitElementToBeClickable(emailInput);
         emailInput.sendKeys(email);
     }
 
     public void enterPassword(final String password) {
+        waitElementToBeClickable(passwordInput);
         passwordInput.sendKeys(password);
     }
 
     public void clickOnSigninButton() {
+        waitElementToBeClickable(signinButton);
         signinButton.click();
     }
 
