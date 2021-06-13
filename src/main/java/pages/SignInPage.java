@@ -25,9 +25,10 @@ public class SignInPage extends BasePage {
     @FindBy(xpath = "//li[@id='loginErrorMessage']")
     private WebElement loginErrorMessage;
 
-    public String getTextFromLoginErrorMessage() {
+    public boolean isDisplayedLoginErrorMessage() {
         waitVisibilityOfElement(loginErrorMessage);
-        return loginErrorMessage.getText();
+        return loginErrorMessage.isDisplayed();
+
     }
 
     public void enterEmail(final String email) {
@@ -57,10 +58,12 @@ public class SignInPage extends BasePage {
     }
 
     public boolean isEnabledEmailInput() {
+        waitVisibilityOfElement(emailInput);
         return emailInput.isEnabled();
     }
 
     public boolean isEnabledPasswordInput() {
+        waitVisibilityOfElement(passwordInput);
         return passwordInput.isEnabled();
     }
 }

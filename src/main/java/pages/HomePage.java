@@ -45,24 +45,25 @@ public class HomePage extends BasePage {
     public void clickOnMyAccountButton() {
         waitElementToBeClickable(myAccountButton);
         myAccountButton.click();
-        waitElementToBeClickable(signInButton);
     }
 
     public void clickOnWishlistButton() {
         waitElementToBeClickable(wishlistButton);
         wishlistButton.click();
-        waitVisibilityOfElement(countProductsFromWishlist);
     }
 
     public String getTextFromCountProductsFromWishlist() {
+        waitVisibilityOfElement(countProductsFromWishlist);
         return countProductsFromWishlist.getText();
     }
 
     public void clickOnGoToMyAccountButton() {
+        waitVisibilityOfElement(goToMyAccountButton);
         goToMyAccountButton.click();
     }
 
     public void clickOnSignInButton() {
+        waitElementToBeClickable(signInButton);
         signInButton.click();
     }
 
@@ -72,6 +73,7 @@ public class HomePage extends BasePage {
     }
 
     public void clickOnWomenFloorButton() {
+        waitElementToBeClickable(womenFloorButton);
         womenFloorButton.click();
     }
 

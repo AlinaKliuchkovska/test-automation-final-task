@@ -8,31 +8,29 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class OutletPage extends BasePage {
-    private static final String discount = "//div[@class='_1MVUcS8']";
+    private static final String DISCOUNT_XPATH = "//div[@class='_1MVUcS8']";
 
     public OutletPage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(xpath = "//button[@aria-haspopup='listbox']")
-    private WebElement sortButton;
-
-    @FindBy(xpath = "//li[@id='plp_web_sort_price_high_to_low']")
-    private WebElement sortPriceHighToLowButton;
-
     @FindBy(xpath = "//a[@class='_3TqU78D']")
     private List<WebElement> listOfProducts;
 
+    @FindBy(xpath = "//a[@class='_3TqU78D']")
+    private WebElement firstProduct;
+
     public void moveToProductPage() {
-        waitVisibilityOfElement(listOfProducts.get(0));
+        waitVisibilityOfElement(firstProduct);
         listOfProducts.get(0).click();
     }
 
     public boolean isDiscountEnabled(WebElement product) {
-        return product.findElement(By.xpath(discount)).isEnabled();
+        return product.findElement(By.xpath(DISCOUNT_XPATH)).isEnabled();
     }
 
     public List<WebElement> getListOfProducts() {
+        waitVisibilityOfElement(firstProduct);
         return listOfProducts;
     }
 }

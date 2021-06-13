@@ -17,20 +17,20 @@ public class SearchResultsPage extends BasePage {
     @FindBy(xpath = "//article[@class='_2qG85dG']")
     private List<WebElement> listOfSearchResults;
 
+    @FindBy(xpath = "//article[@class='_2qG85dG']")
+    private WebElement firstSearchResult;
+
     public boolean isEnabledNothingMatchesTextField() {
+        waitVisibilityOfElement(nothingMatchesTextField);
         return nothingMatchesTextField.isEnabled();
     }
 
     public List<WebElement> getListOfSearchResults() {
+        waitVisibilityOfElement(firstSearchResult);
         return listOfSearchResults;
     }
 
     public String getTextFromNothingMatchesTextField() {
         return nothingMatchesTextField.getText();
-    }
-
-    public boolean isEnabledListOfElements() {
-        waitVisibilityOfElement(listOfSearchResults.get(0));
-        return listOfSearchResults.get(0).isEnabled();
     }
 }

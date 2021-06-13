@@ -47,16 +47,19 @@ public class ProductPage extends BasePage {
     private WebElement productDetailsTextField;
 
     public double getOldPriceWithDiscount() {
+        waitVisibilityOfElement(oldPrice);
         double price = Double.parseDouble(oldPrice.getText().replace("RRP £", ""));
         double discount = Double.parseDouble(discountPercent.getText().replace("%)", "").replace("(-", ""));
         return price - (price * (discount * 0.01));
     }
 
     public double getCurrentPrice() {
+        waitVisibilityOfElement(currentPrice);
         return Double.parseDouble(currentPrice.getText().replace("£", ""));
     }
 
     public ProductPage selectProductSize() {
+        waitVisibilityOfElement(sizeSelect);
         Select selectProductSize = new Select(sizeSelect);
         selectProductSize.selectByIndex(1);
         return this;
@@ -83,30 +86,37 @@ public class ProductPage extends BasePage {
     }
 
     public String getProductsCountFromCart() {
+        waitVisibilityOfElement(cartPopup);
         return cartPopup.getText();
     }
 
     public boolean isEnabledPhotoGalleryOfProduct() {
+        waitVisibilityOfElement(photoGalleryOfProduct);
         return photoGalleryOfProduct.isEnabled();
     }
 
     public boolean isEnabledProductDescriptionSection() {
+        waitVisibilityOfElement(productDescriptionSection);
         return productDescriptionSection.isEnabled();
     }
 
     public boolean isEnabledSaveToWishlistButton() {
+        waitVisibilityOfElement(saveToWishlistButton);
         return saveToWishlistButton.isEnabled();
     }
 
     public boolean isEnabledProductColorTextField() {
+        waitVisibilityOfElement(productColorTextField);
         return productColorTextField.isEnabled();
     }
 
     public boolean isEnabledSizeSelect() {
+        waitVisibilityOfElement(sizeSelect);
         return sizeSelect.isEnabled();
     }
 
     public boolean isEnabledProductDetailsTextField() {
+        waitVisibilityOfElement(productDetailsTextField);
         return productDetailsTextField.isEnabled();
     }
 }

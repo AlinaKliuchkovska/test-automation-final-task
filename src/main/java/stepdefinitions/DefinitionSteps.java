@@ -156,15 +156,14 @@ public class DefinitionSteps {
 
     @Then("User checks that all product names contain keyword {string}")
     public void userChecksThatAllProductNamesContainsKeywordKeyword(String keyword) {
-        assertTrue(searchResultsPage.isEnabledListOfElements());
         for (WebElement product : searchResultsPage.getListOfSearchResults()) {
             assertTrue(product.getText().contains(keyword));
         }
     }
 
-    @Then("User checks that login error message {string} is correct")
-    public void userChecksThatLoginErrorMessageIsCorrect(String errorMessage) {
-        assertEquals(signInPage.getTextFromLoginErrorMessage(), errorMessage);
+    @Then("User checks that login error message is displayed")
+    public void userChecksThatLoginErrorMessageIsDisplayed() {
+        assertTrue(signInPage.isDisplayedLoginErrorMessage());
     }
 
     @Then("User checks that information message {string} is displayed")

@@ -33,7 +33,7 @@ Feature: Smoke
     And User clicks on Log out button
 
     Examples:
-      | homePage              | email                 | password        | keyword    |
+      | homePage              | email               | password        | keyword    |
       | https://www.asos.com/ | asostest6@gmail.com | $sQJx$eQw7?Rtg3 | My Account |
 
   Scenario Outline: Check that search function works correct
@@ -55,11 +55,11 @@ Feature: Smoke
     And User enters email '<email>'
     And User enters password '<password>'
     When User clicks on Submit sign in button
-    Then User checks that login error message '<errorMessage>' is correct
+    Then User checks that login error message is displayed
 
     Examples:
-      | homePage              | email          | password        | errorMessage                                                                      |
-      | https://www.asos.com/ | test@gmail.com | $sQJx$eQw7?Rtg3 | Looks like either your email address or password were incorrect. Wanna try again? |
+      | homePage              | email          | password        |
+      | https://www.asos.com/ | test@gmail.com | $sQJx$eQw7?Rtg3 |
 
   Scenario Outline: Check that search information message is displayed
     Given User opens '<homePage>' page
